@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Plant Disease Detection</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🌿 AI Plant Disease Detection</h1>
+        <p>Upload or capture a leaf image to detect plant disease</p>
+
+        <input type="file" id="imageUpload" accept="image/*" capture="environment">
+        <button id="cameraBtn">📷 Open Camera</button>
+        <div id="previewContainer"></div>
+
+        <div id="loadingStatus">Loading AI model... Please wait.</div>
+        <button id="predictBtn" onclick="predict()" disabled>Detect Disease</button>
+
+        <div id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
