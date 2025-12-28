@@ -1,8 +1,40 @@
 body {
     font-family: Arial, sans-serif;
-    background: #e8f5e9;
+    background: linear-gradient(45deg, #e8f5e9, #c8e6c9, #a5d6a7);
+    background-size: 400% 400%;
+    animation: backgroundShift 10s ease infinite;
     margin: 0;
     padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920'), url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920'), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    animation: imageCycle 15s infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes imageCycle {
+    0% { background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920'); }
+    33% { background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920'); }
+    66% { background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920'); }
+    100% { background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920'); }
 }
 
 .container {
@@ -33,16 +65,46 @@ input[type="file"] {
 }
 
 button {
-    background: #4caf50;
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
     color: white;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 button:hover {
-    background: #388e3c;
+    background: linear-gradient(45deg, #388e3c, #4caf50);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
 }
 
 #results div {
